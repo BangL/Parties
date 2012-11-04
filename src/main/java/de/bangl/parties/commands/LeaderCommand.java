@@ -55,7 +55,7 @@ public class LeaderCommand extends AbstractCommand {
                         if (party.isOp(player)) {
                             party.deop(player);
                         }
-                        party.sendPartyMessage(ChatColor.GOLD + leader.getDisplayName() + " is the new party leader!");
+                        party.sendPartyMessage(leader.getDisplayName() + ChatColor.GOLD + " is the new party leader!");
                     } else {
                         player.sendMessage(ChatColor.RED + "This player is not part of your party.");
                     }

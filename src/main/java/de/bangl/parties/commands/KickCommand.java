@@ -57,7 +57,7 @@ public class KickCommand extends AbstractCommand {
                             } else {
                                 party.removeMember(kick);
                                 PartiesAPI.getInstance().setPartyChatMode(player, false);
-                                party.sendPartyMessage(ChatColor.GOLD + kick.getDisplayName() + " has been kicked from the party!");
+                                party.sendPartyMessage(kick.getDisplayName() + ChatColor.GOLD + " has been kicked from the party!");
                                 kick.sendMessage(ChatColor.RED + "You have been kicked from the party!");
                                 if (party.isEmpty()) {
                                     party.sendPartyMessage(ChatColor.GOLD + "Your party dissolved.");

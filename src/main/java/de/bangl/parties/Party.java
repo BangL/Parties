@@ -58,7 +58,7 @@ public class Party {
 
     public void sendPartyChat(final Player player, final String message) {
         for (final Player member : members) {
-            member.sendMessage(ChatColor.GOLD + "Party " + ChatColor.RESET + player.getDisplayName() + ChatColor.GOLD + " :" + ChatColor.RESET + message);
+            member.sendMessage(ChatColor.GOLD + "Party " + ChatColor.RESET + player.getDisplayName() + ChatColor.GOLD + " :" + ChatColor.DARK_GREEN + message);
         }
     }
 
@@ -70,13 +70,13 @@ public class Party {
 
     public String listMembers() {
         int total = 0;
-        String list = "**" + this.getLeader().getDisplayName() + ChatColor.RESET + ChatColor.GOLD + ", ";
+        String list = "**" + this.getLeader().getDisplayName() + ChatColor.GOLD + ", ";
         for (final Player player : members) {
             if (!this.isLeader(player)) {
                 if (this.isOp(player)) {
                     list = list.concat("*");
                 }
-                list = list.concat(player.getDisplayName() + ChatColor.RESET + ChatColor.GOLD + ", ");
+                list = list.concat(player.getDisplayName() + ChatColor.GOLD + ", ");
             }
             total++;
         }

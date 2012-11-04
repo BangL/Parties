@@ -40,14 +40,13 @@ public class DeclineCommand extends AbstractCommand {
         if (sender instanceof Player) {
             final Player player = (Player)sender;
             if (PartiesAPI.getInstance().isInvited(player)) {
-                player.sendMessage(ChatColor.RED + "You are not invited by anybody.");
-            } else {
                 final Player host = PartiesAPI.getInstance().getInvite(player).getHost();
-                host.sendMessage(ChatColor.GOLD + player.getDisplayName() + " has declined your party invite.");
+                host.sendMessage(player.getDisplayName() + ChatColor.GOLD + " has declined your party invite.");
                 PartiesAPI.getInstance().uninvite(player);
                 player.sendMessage(ChatColor.GOLD + "You declined to join the party of " + host.getDisplayName());
+            } else {
+                player.sendMessage(ChatColor.RED + "You are not invited by anybody.");
             }
-            player.sendMessage(ChatColor.RED + "No party with that name exists!");
         } else {
             sender.sendMessage("You can't decline party invites!");
         }

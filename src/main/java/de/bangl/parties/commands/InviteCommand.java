@@ -64,11 +64,11 @@ public class InviteCommand extends AbstractCommand {
                                     player.sendMessage(ChatColor.RED + "This player is already in a party.");
                                 } else {
                                     PartiesAPI.getInstance().invite(player, summoned);
-                                    summoned.sendMessage(ChatColor.GOLD + "You have been invited to a party by " + player.getDisplayName());
+                                    summoned.sendMessage(ChatColor.GOLD + "You have been invited to a party by " + ChatColor.RESET + player.getDisplayName());
                                     if (party == null) {
-                                        player.sendMessage(ChatColor.GOLD + summoned.getDisplayName() + " has been invited to build a party with you.");
+                                        player.sendMessage(summoned.getDisplayName() + ChatColor.GOLD + " has been invited to build a party with you.");
                                     } else {
-                                        party.sendPartyMessage(ChatColor.GOLD + summoned.getDisplayName() + " has been invited by " + player.getDisplayName() + " to join the party.");
+                                        party.sendPartyMessage(summoned.getDisplayName() + ChatColor.GOLD + " has been invited by " + ChatColor.RESET + player.getDisplayName() + ChatColor.GOLD + " to join the party.");
                                     }
                                 }
                             }

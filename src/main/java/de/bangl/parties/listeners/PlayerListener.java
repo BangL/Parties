@@ -62,14 +62,14 @@ public class PlayerListener implements Listener {
             final Party party = PartiesAPI.getInstance().getParty(player);
             if (party != null) {
                 party.removeMember(player);
-                party.sendPartyMessage(ChatColor.GOLD + player.getDisplayName() + " has left the party!");
+                party.sendPartyMessage(player.getDisplayName() + ChatColor.GOLD + " has left the party!");
                 if (party.isEmpty()) {
                     party.sendPartyMessage(ChatColor.GOLD + "Your party dissolved.");
                     PartiesAPI.getInstance().removeParty(party);
                 } else {
                     if (party.getLeader().equals(player)) {
                         party.setRandomLeader();
-                        party.sendPartyMessage(ChatColor.GOLD + party.getLeader().getDisplayName() + " is the new party leader!");
+                        party.sendPartyMessage(party.getLeader().getDisplayName() + ChatColor.GOLD + " is the new party leader!");
                     }
                     if (party.isOp(player)) {
                         party.deop(player);

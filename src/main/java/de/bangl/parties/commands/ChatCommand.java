@@ -38,44 +38,38 @@ public class ChatCommand extends AbstractCommand {
 
     @Override
     public boolean execute(final CommandSender sender, final String[] split) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage("You can't chat with parties!");
-            return true;
-        }
-        final Player player = (Player) sender;
-        Party p;
-        if (!PartiesAPI.getInstance().inParty(player)) {
-            player.sendMessage(ChatColor.RED
-                    + "You must be in a party to chat with the party!");
-            return true;
-        }
-        if (split.length == 1) {
-            if (PartiesAPI.getInstance().getPartyChatMode(player)) {
-                PartiesAPI.getInstance().setPartyChatMode(player, false);
-                player.sendMessage(ChatColor.GOLD
-                        + "You messages will now go to game chat!");
-                return true;
+        if (sender instanceof Player) {
+            final Player player = (Player) sender;
+            if (PartiesAPI.getInstance().inParty(player)) {
+                if (split.length == 2) {
+                    if (PartiesAPI.getInstance().getPartyChatMode(player)) {
+                        PartiesAPI.getInstance().setPartyChatMode(player, false);
+                        player.sendMessage(ChatColor.GOLD + "You messages will now go to game chat!");
+                    } else {
+                        PartiesAPI.getInstance().setPartyChatMode(player, true);
+                        player.sendMessage(ChatColor.GOLD + "You messages will now go to party chat!");
+                    }
+                } else {
+                    final Party party = PartiesAPI.getInstance().getParty(player);
+                    if (party == null) {
+                        player.sendMessage(ChatColor.RED + "Your party was not found... Say what?!?!");
+                    } else {
+                        String message = null;
+                        for (int i = 2; i < split.length; i++) {
+                            if (message == null) {
+                                message = "";
+                            }
+                            message = message.concat(split[i] + " ");
+                        }
+                        party.sendPartyChat(player, message.substring(0, message.length() - 1));
+                    }
+                }
             } else {
-                PartiesAPI.getInstance().setPartyChatMode(player, true);
-                player.sendMessage(ChatColor.GOLD
-                        + "You messages will now go to party chat!");
-                return true;
+                player.sendMessage(ChatColor.RED + "You are not in a party!");
             }
         } else {
-            if ((p = PartiesAPI.getInstance().getParty(player)) != null) {
-                String message = "";
-                for (int i = 1; i < split.length; i++) {
-                    message += split[i] + " ";
-                }
-                p.sendPartyChat(player,
-                        message.substring(0, message.length() - 1));
-                return true;
-            }
-            player.sendMessage(ChatColor.RED
-                    + "Your party was not found... say what?!?!?");
+            sender.sendMessage("You can't chat with parties!");
         }
-        player.sendMessage(ChatColor.RED
-                + "Invalid command usage! Type /p help for help!");
         return true;
     }
 

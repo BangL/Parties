@@ -43,12 +43,12 @@ public class OpCommand extends AbstractCommand {
                     } else if (PartiesAPI.getInstance().inParty(op)
                             && PartiesAPI.getInstance().getParty(op).equals(party)) {
                         if (party.isLeader(op)) {
-                            player.sendMessage(ChatColor.RED + op.getDisplayName() + " is the already the leader of this party.");
+                            player.sendMessage(op.getDisplayName() + ChatColor.RED + " is the already the leader of this party.");
                         } else if (party.isOp(op)) {
-                            player.sendMessage(ChatColor.RED + op.getDisplayName() + " is already an operator of this party.");
+                            player.sendMessage(op.getDisplayName() + ChatColor.RED + " is already an operator of this party.");
                         } else {
-                            party.op(player);
-                            party.sendPartyMessage(ChatColor.GOLD + op.getDisplayName() + " is now an operator of this party.");
+                            party.op(op);
+                            party.sendPartyMessage(op.getDisplayName() + ChatColor.GOLD + " is now an operator of this party.");
                         }
                     } else {
                         player.sendMessage(ChatColor.RED + "This player is not part of your party.");

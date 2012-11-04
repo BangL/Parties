@@ -47,7 +47,7 @@ public class AcceptCommand extends AbstractCommand {
                     party = new Party(host);
                     PartiesAPI.getInstance().addParty(party);
                 }
-                party.sendPartyMessage(ChatColor.GOLD + player.getDisplayName() + " has joined the party!");
+                party.sendPartyMessage(player.getDisplayName() + ChatColor.GOLD + " has joined the party!");
                 PartiesAPI.getInstance().uninvite(player);
                 party.addMember(player);
                 player.sendMessage(ChatColor.GOLD + "You joined a party:");
