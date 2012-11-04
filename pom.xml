@@ -11,28 +11,28 @@
     </properties>
 
     <scm>
-        <connection>scm:git:git://github.com/Monstercraft/MonsterParty.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/Monstercraft/MonsterParty.git</developerConnection>
-        <url>https://github.com/Monstercraft/MonsterParty</url>
+        <connection>scm:git:git://github.com/BangL/Parties.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:BangL/Parties.git</developerConnection>
+        <url>https://github.com/BangL/Parties</url>
     </scm>
 
     <ciManagement>
         <system>Jenkins</system>
-        <url>http://dev.monstercraft.org:8080/job/MonsterParty</url>
+        <url>http://ci.bangl.de/job/Parties</url>
     </ciManagement>
 
     <repositories>
         <repository>
-        <id>bukkit-repo</id>
-        <url>http://repo.bukkit.org/content/groups/public/</url>
-    </repository>
+            <id>bukkit-repo</id>
+            <url>http://repo.bukkit.org/content/groups/public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>[1.,]</version>
+            <version>[1.4,]</version>
             <type>jar</type>
         </dependency>
     </dependencies>
