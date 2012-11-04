@@ -61,7 +61,12 @@ public class ChatCommand extends AbstractCommand {
                             }
                             message = message.concat(split[i] + " ");
                         }
-                        party.sendPartyChat(player, message.substring(0, message.length() - 1));
+                        message = message.substring(0, message.length() - 1);
+                        if (PartiesAPI.getInstance().getPartyChatMode(player)) {
+                            player.chat(message);
+                        } else {
+                            party.sendPartyChat(player, message);
+                        }
                     }
                 }
             } else {
