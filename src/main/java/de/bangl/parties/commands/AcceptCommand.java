@@ -41,8 +41,6 @@ public class AcceptCommand extends AbstractCommand {
         if (sender instanceof Player) {
             final Player player = (Player)sender;
             if (PartiesAPI.getInstance().isInvited(player)) {
-                player.sendMessage(ChatColor.RED + "You are not invited by anybody.");
-            } else {
                 final Player host = PartiesAPI.getInstance().getInvite(player).getHost();
                 Party party = PartiesAPI.getInstance().getParty(host);
                 if (party == null) {
@@ -54,8 +52,9 @@ public class AcceptCommand extends AbstractCommand {
                 party.addMember(player);
                 player.sendMessage(ChatColor.GOLD + "You joined a party:");
                 player.sendMessage(party.listMembers());
+            } else {
+                player.sendMessage(ChatColor.RED + "You are not invited by anybody.");
             }
-            player.sendMessage(ChatColor.RED + "No party with that name exists!");
         } else {
             sender.sendMessage("You can't join parties!");
         }
