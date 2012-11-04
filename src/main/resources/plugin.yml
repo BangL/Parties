@@ -1,50 +1,21 @@
-name: MonsterParty
-main: org.monstercraft.party.MonsterParty
-version: '${project.version}'
-author: Fletch_to_99, Jurre1996
+name: Parties
+main: de.bangl.parties.PartiesPlugin
 description: A party system.
-loadbefore: [Herochat]
+version: '${project.version}'
+
+authors: [ Fletch_to_99, Jurre1996, BangL ]
+
 commands:
-  party:
-    description: View party information on out dbo page.
-    usage: /party (command)
   p:
-    description: View party information on out dbo page.
-    usage: /p (command)
+    description: Parties main command.
+    usage: /<command> (command) (arguments)
+    aliases: [ party, parties ]
   pc:
-    description: Talk in party chat
-    usage: /pc to toggle or /pc (message) to send a quick message
-  ptp:
-    description: Teleport to another party member.
-    usage: /ptp (player)
+    description: Short of /p chat
+    usage: /<command> to toggle party chat mode, or /<command> (message) to send a quick message.
+    aliases: [ partychat, partieschat, pchat ]
+
 permissions:
-  monsterparty.create:
-    description: Create a party.
-    default: op
-  monsterparty.join:
-    description: Join a party.
-    default: op
-  monsterparty.leave:
-    description: leave a party.
-    default: op
-  monsterparty.list:
-    description: leave a party.
-    default: op
-  monsterparty.kick:
-    description: leave a party.
-    default: op
-  monsterparty.invite:
-    description: leave a party.
-    default: op
-  monsterparty.chat:
-    description: leave a party.
-    default: op
-  monsterparty.teleport:
-    description: Teleport to a party member.
-    default: op
-  monsterparty.help:
-    description: Check for help commands.
+  parties.use:
+    description: Allows to use parties.
     default: true
-  monsterparty.admin:
-    description: Teleport to a party member.
-    default: op
