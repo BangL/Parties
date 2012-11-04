@@ -1,10 +1,10 @@
-MonsterParty is a plugin for bukkit. The plugin's source code is completely open and free - whether you're a Java expert or just keen to explore, these can be valuable learning resources. 
+Parties is a plugin for bukkit. The plugin's source code is completely open and free - whether you're a Java expert or just keen to explore, these can be valuable learning resources. 
 
 ###Get the code
 
 Download the latest source code with:
 
-    git clone git://github.com/Monstercraft/MonsterParty.git
+    git clone git://github.com/BangL/Parties.git
 	
 Keep your source up to date with:
 
