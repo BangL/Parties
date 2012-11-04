@@ -56,6 +56,7 @@ public class PlayerListener implements Listener {
         }
     }
 
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     public void onPlayerQuit(final PlayerQuitEvent event) {
         final Player player = event.getPlayer();
         if (PartiesAPI.getInstance().inParty(player)) {

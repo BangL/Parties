@@ -50,17 +50,20 @@ public class CommandManager {
     public boolean onGameCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
 
         // Process aliases
-        final String[] split = new String[args.length + 1];
-
+        String[] split = new String[0];
         int shift = 0;
+        
         if (label.equalsIgnoreCase("pc")) {
+            split = new String[args.length + 2];
             split[0] = "party";
             split[1] = "chat";
             shift = 1;
         } else if (label.equalsIgnoreCase("party")
                 || label.equalsIgnoreCase("parties")
                 || label.equalsIgnoreCase("p")) {
+            split = new String[args.length + 1];
             split[0] = "party";
+            shift = 0;
         }
 
         // Get args
