@@ -14,12 +14,16 @@
  */
 package de.bangl.parties;
 
+import de.bangl.parties.api.PartiesAPI;
 import de.bangl.parties.commands.CommandManager;
 import de.bangl.parties.listeners.PlayerListener;
+import java.util.Date;
 import java.util.logging.Level;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -32,11 +36,17 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class PartiesPlugin extends JavaPlugin {
 
+    private final static int TIMEOUT = 25;
     private static CommandManager command = new CommandManager();
+
+    private ExpireChecker checker;
+    private int scheduledTaskId;
 
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
+        checker = new ExpireChecker(this);
+        scheduledTaskId = getServer().getScheduler().scheduleAsyncRepeatingTask(this, checker, 1200L, 300);
     }
 
     @Override
@@ -54,5 +64,27 @@ public class PartiesPlugin extends JavaPlugin {
 
     public static void log(final String msg) {
         Bukkit.getLogger().info(msg);
+    }
+
+    private static class ExpireChecker implements Runnable {
+        private final transient PartiesPlugin plugin;
+
+        public ExpireChecker(final PartiesPlugin plugin) {
+            this.plugin = plugin;
+        }
+
+        @Override
+        public void run() {
+            final Date now = new Date();
+            for (Invite invite : PartiesAPI.getInstance().getInvites()) {
+                final Player player = invite.getPlayer();
+                final Player host = invite.getHost();
+                if (invite.getTime().getTime() + (TIMEOUT * 1000) <= now.getTime()) {
+                    host.sendMessage(ChatColor.GOLD + "The invitation of " + ChatColor.RESET + player.getDisplayName() + ChatColor.GOLD + " expired.");
+                    player.sendMessage(ChatColor.GOLD + "The invitation by " + ChatColor.RESET + host.getDisplayName() + ChatColor.GOLD + " expired.");
+                    PartiesAPI.getInstance().uninvite(invite.getPlayer());
+                }
+            }
+        }
     }
 }

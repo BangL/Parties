@@ -17,6 +17,7 @@ package de.bangl.parties.api;
 import de.bangl.parties.Invite;
 import de.bangl.parties.Party;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import org.bukkit.entity.Player;
 
@@ -99,6 +100,10 @@ public class PartiesAPI {
 
     public Invite getInvite(final Player player) {
         return PartiesAPI.invites.get(player);
+    }
+
+    public Collection<Invite> getInvites() {
+        return PartiesAPI.invites.values();
     }
 
     public void invite(final Player host, final Player summoned) {
