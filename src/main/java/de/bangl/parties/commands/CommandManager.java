@@ -64,7 +64,7 @@ public class CommandManager {
         }
 
         // Get args
-        for (int i = 1; i < args.length; i++) {
+        for (int i = 1; i - 1 < args.length; i++) {
             split[i + shift] = args[i - 1];
         }
 
