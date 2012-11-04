@@ -6,14 +6,27 @@
     <artifactId>Parties</artifactId>
     <version>0.2-SNAPSHOT</version>
 
+    <name>Parties</name>
+    <description>A party system.</description>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License 3.0</name>
+            <url>LICENSE</url>
+            <distribution>repo</distribution>
+            <comments>License on all contributions</comments>
+        </license>
+    </licenses>
+
     <properties>
-        <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <scm>
         <connection>scm:git:git://github.com/BangL/Parties.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:BangL/Parties.git</developerConnection>
         <url>https://github.com/BangL/Parties</url>
+        <tag>master</tag>
+        <developerConnection>scm:git:ssh://git@github.com:BangL/Parties.git</developerConnection>
     </scm>
 
     <ciManagement>
@@ -38,6 +51,9 @@
     </dependencies>
 
     <build>
+        <defaultGoal>install</defaultGoal>
+        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+
         <resources>
             <resource>
                 <targetPath>.</targetPath>
@@ -48,6 +64,7 @@
                 </includes>
             </resource>
         </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -59,5 +76,7 @@
                 </configuration>
             </plugin>
         </plugins>
+
     </build>
+
 </project>
