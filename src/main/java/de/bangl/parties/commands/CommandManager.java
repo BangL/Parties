@@ -51,19 +51,21 @@ public class CommandManager {
 
         // Process aliases
         final String[] split = new String[args.length + 1];
-        int start = 1;
+
+        int shift = 0;
         if (label.equalsIgnoreCase("pc")) {
             split[0] = "party";
+            split[1] = "chat";
+            shift = 1;
         } else if (label.equalsIgnoreCase("party")
                 || label.equalsIgnoreCase("parties")
                 || label.equalsIgnoreCase("p")) {
             split[0] = "party";
-            start = 0;
         }
 
         // Get args
-        for (int i = start; i < args.length; i++) {
-            split[i + 1] = args[i];
+        for (int i = 1; i < args.length; i++) {
+            split[i + shift] = args[i - 1];
         }
 
         boolean processed = false;
