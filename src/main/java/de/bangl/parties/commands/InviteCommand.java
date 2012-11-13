@@ -14,6 +14,7 @@
  */
 package de.bangl.parties.commands;
 
+import de.bangl.parties.PartiesPlugin;
 import de.bangl.parties.Party;
 import de.bangl.parties.api.PartiesAPI;
 import org.bukkit.Bukkit;
@@ -65,6 +66,8 @@ public class InviteCommand extends AbstractCommand {
                                 } else {
                                     PartiesAPI.getInstance().invite(player, summoned);
                                     summoned.sendMessage(ChatColor.GOLD + "You have been invited to a party by " + ChatColor.RESET + player.getDisplayName());
+                                    summoned.sendMessage(ChatColor.GOLD + "Type " + ChatColor.AQUA + "/p accept" + ChatColor.GOLD + " or " + ChatColor.AQUA + "/p decline" + ChatColor.GOLD + " to react.");
+                                    summoned.sendMessage(ChatColor.GOLD + "This invite will expire in ~" + PartiesPlugin.TIMEOUT + " seconds.");
                                     if (party == null) {
                                         player.sendMessage(summoned.getDisplayName() + ChatColor.GOLD + " has been invited to build a party with you.");
                                     } else {

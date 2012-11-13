@@ -28,8 +28,8 @@ import org.bukkit.entity.Player;
 public class Party {
 
     private Player leader;
-    private transient final ArrayList<Player> members = new ArrayList<>();
-    private transient final ArrayList<Player> ops = new ArrayList<>();
+    private transient final ArrayList<Player> members = new ArrayList<Player>();
+    private transient final ArrayList<Player> ops = new ArrayList<Player>();
 
     public Party(final Player leader) {
         this.leader = leader;

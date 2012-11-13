@@ -37,7 +37,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class PartiesPlugin extends JavaPlugin {
 
     // Invite timeout in seconds
-    private final static int TIMEOUT = 10;
+    public final static int TIMEOUT = 10;
 
     private static CommandManager command = new CommandManager();
 
@@ -48,7 +48,7 @@ public class PartiesPlugin extends JavaPlugin {
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new PlayerListener(), this);
         checker = new ExpireChecker(this);
-        scheduledTaskId = getServer().getScheduler().scheduleAsyncRepeatingTask(this, checker, 1200L, 300);
+        scheduledTaskId = getServer().getScheduler().scheduleAsyncRepeatingTask(this, checker, TIMEOUT*20, TIMEOUT*20);
     }
 
     @Override

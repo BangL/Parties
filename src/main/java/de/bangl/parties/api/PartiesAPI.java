@@ -30,9 +30,9 @@ import org.bukkit.entity.Player;
  */
 public class PartiesAPI {
 
-    private static ArrayList<Party> parties = new ArrayList<>();
-    private static ArrayList<Player> directedChat = new ArrayList<>();
-    private static HashMap<Player, Invite> invites = new HashMap<>();
+    private static ArrayList<Party> parties = new ArrayList<Party>();
+    private static ArrayList<Player> directedChat = new ArrayList<Player>();
+    private static HashMap<Player, Invite> invites = new HashMap<Player, Invite>();
 
     private PartiesAPI(){}
 
