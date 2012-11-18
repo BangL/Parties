@@ -61,7 +61,7 @@ public class InviteCommand extends AbstractCommand {
                                     player.sendMessage(ChatColor.RED + "This player is already invited by someone else.");
                                 }
                             } else {
-                                if (PartiesAPI.getInstance().inParty(player)) {
+                                if (PartiesAPI.getInstance().inParty(summoned)) {
                                     player.sendMessage(ChatColor.RED + "This player is already in a party.");
                                 } else {
                                     PartiesAPI.getInstance().invite(player, summoned);
