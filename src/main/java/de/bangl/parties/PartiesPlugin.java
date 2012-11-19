@@ -37,7 +37,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class PartiesPlugin extends JavaPlugin {
 
     // Invite timeout in seconds
-    public final static int TIMEOUT = 10;
+    public final static int TIMEOUT = 30;
 
     private static CommandManager command = new CommandManager();
 
