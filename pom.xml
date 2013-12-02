@@ -4,7 +4,7 @@
 
     <groupId>de.bangl.parties</groupId>
     <artifactId>Parties</artifactId>
-    <version>0.4-SNAPSHOT</version>
+    <version>0.5-SNAPSHOT</version>
 
     <name>Parties</name>
     <description>A party system.</description>
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.4.7-R1.1-SNAPSHOT</version>
+            <version>1.7.2-R0.1-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
     </dependencies>
